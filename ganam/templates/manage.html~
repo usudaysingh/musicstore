@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block user_image %}<img id="use_image"  style="position:relative;float:right; top:0px;margin-right:10px;" src="/static/images/use.jpg" />{% endblock %}
+
+{% block logout %}<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{{ user.username }}</font><a href="/ganam/logout/">Logout</a></p> {% endblock %}
+{% block manage_admin %}
+<div id ="buttons">
+<button  id="admin1" class="admin_button" onclick="songs()">Manage Songs</button>
+<button  id="admin2" class="admin_button" onclick="user()">Manage Users</button>
+<button  id="admin2" class="admin_button" onclick="albums()">Manage Albums</button>
+</div>
+{% endblock %}
+{% block content %}
+<p>{{ delete }}</p>
+<p>{{ updated }}</p>
+<div id="manage_songs">
+<div>
+<h1>Songs in database </h1>
+</div>
+<div id="manage">
+	{% for f in songs %}
+		<div id=manage_song_list style="position:relative;">	
+		<a href="/ganam/delete/{{ f.id}}/"><img id="delete_image" src="/static/images/del.png" /></a>	
+		<a href="/ganam/update/{{ f.id}}/"><img id="edit_image" src="/static/images/ed.png" /></a>			
+			<div id="list_songs">
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{f.track}}</a></h2></font>
+				<p id="details">{{f.album }} {{f.year }} </p>  
+				
+			</div>
+				
+		</div>	
+	{%  endfor %}
+	</div>
+
+</div>
+<div id="manage_users" style="display:none; position:absolute;">
+<h1> hello i m user </h1>
+<h2> work in progress </h2>
+</div>
+<div id="manage_albums" style="display:none; position:absolute;">
+<h1>Here is album</h1>
+</div>
+{% endblock %}

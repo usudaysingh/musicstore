@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block user_image %}<img id="use_image"  style="position:relative;float:right; top:0px;margin-right:10px;" src="/static/images/use.jpg" />{% endblock %}
+{% block logout %}<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{{ user.username }}</font><a href="/ganam/logout/">Logout</a></p> {% endblock %}
+{% block content %}
+<div id="edit_form">
+		<h1>Edit the details </h1>
+		<form method="ganam/done/{{ id }}" method="post">{% csrf_token %}
+			<label id="edit_label">Song id :</label><label id="edit_label"> {{  id }}</label>
+			<br><br>
+			<label id="edit_label">Track Name :</label><input id="edit_input" type=textbox name="update_track" value={{  name }} />
+			<br><br>
+			<label id="edit_label">Year :</label><input id="edit_input" name="update_year" type=textbox value={{  year }} />
+			<br><br>			
+			<label id="edit_label">Artist 1 :</label><input id="edit_input" name="update_artist1" type=textbox value={{  artist1 }} />
+			<br><br>			
+			<label id="edit_label">Artist 2 :</label><input id="edit_input" name="update_artist2" type=textbox value={{  artist2 }} />
+			<br><br>			
+			<label id="edit_label">Genre :</label><input id="edit_input" name="update_genre" type=textbox value={{  genre }} />
+			<br><br>	
+			<label id="edit_label">Label :</label><input id="edit_input" name="update_label" type=textbox value={{  label }} />
+			<br><br>
+			<label id="edit_label">Star :</label><input id="edit_input" name="update_star" type=textbox value={{  star }} />
+			<br><br>
+			<label id="edit_label">Language :</label><input id="edit_input" name="update_language" type=textbox value={{  language }} />
+			<br><br>
+			<input style="margin-left:70px;" type="image" name="submit" src="/static/images/up.png" border="0" alt="Submit" />
+		</form>
+		</div>	
+{% endblock %}

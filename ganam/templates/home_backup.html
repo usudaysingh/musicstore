@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Popup Login and Register</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
+<a href="/ganam/home/"><img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" /></a>
+<nav id="symbol">
+	<a href="/ganam/home/"><h1>GANAM </h1></a>
+</nav>
+<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{% block name %}{{ user.username }}{% endblock %}</font><a href="/logout">Logout</a></p>
+</head>
+<body>
+
+<div class="container">
+	
+	
+	<div id ="navbar">
+		<input type="text" id="searchbox" value="type to search">
+		<ul>
+  		     <li id="main"><a href="#">Top 20</a></li>
+		     <li id="main"><a href="#">Categories</a>
+			<ul>
+			    <li><a href="/ganam/category/Jazz/">Jazz</a></li>
+			    <li><a href="/ganam/category/HipHop/">Hip Hop</a></li>
+			    <li><a href="/ganam/category/Rock/">Rock</a></li> 			    
+			</ul>
+		     </li>		    
+		     <li id="main"><a href="#">Songs</a>
+			<ul>
+			    <li><a href="/ganam/category/Jazz/">fghhjjgjhg</a></li>
+			    <li><a href="/ganam/category/HipHop/">Hip Hop</a></li>
+			    <li><a href="/ganam/category/Rock/">Rock</a></li> 			    
+			</ul>
+		     </li>
+		     <li id="main"><a href="#">Albums</a></li>	
+		     <li id="main"><a href="#">People</a></li>
+		     <li id="main"><a href="#">Radio</a></li>
+		     <li id="main"><a href="#">Application</a></li>
+
+		</ul>
+	</div>
+	<div id ="user_library">
+	<p class="user_songs"><font style="color:red;">Top</font> 20Songs</p>
+	{% block content %}{% endblock %}	
+	{% for t in top%}
+			<a href="/ganam/article/{{ f.id}}/"><img id="user_image" style="position:absolute;margin:10px;" src="/static/images/cd.jpg" /></a>
+			<div id ="library_songs" style="color:green; margin-left:40px; padding:0px;">
+				<font style="color:green;"><h4 class="h1">{{t.song_title}}</h4></font>
+				<font style="color:black;"><p>{{t.genre }}</p></font>
+			</div>
+			
+	{%  endfor %}
+	</div>
+		
+	<div id="albums">
+	{% for f in post %}
+		<div id=album_list>		
+			<a href="/ganam/article/{{ f.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{f.song_title}}</a></h2></font>
+				<p id="details">{{f.genre }} {{f.album }} {{f.artists }} {{f.genre}}</p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>
+	{%  endfor %}
+	</div>
+	
+</div>
+</body>
+</html>

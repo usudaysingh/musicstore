@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>GAANAM</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/exporting.js"></script>
+<script src="/static/js/highcharts.js"></script>
+<a href="/ganam/home/"><img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" /></a>
+{% block user_image %}<img id="use_image"  style="position:relative;float:right; top:0px;margin-right:10px;" src="/static/images/use.jpg" />{% endblock %}
+
+<nav id="symbol">
+	<a href="/ganam/home/"><h1>GANAM </h1></a>
+</nav>
+{% block logout %}<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{{ user.username }}</font><a href="/ganam/logout/">Logout</a></p> {% endblock %}
+{% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+</head>
+<body>
+
+<div class="container">
+	
+	<nav id ="navbar">
+		{% block search %} 
+		<form method="get" action="/ganam/search/">
+            	<input type="text" name="q" id="searchbox" placeholder="search"></input>
+        	<input id="search_button" type="image" name="submit" src="/static/images/usq.png" border="0" alt="Submit" /> 
+    		</form>
+		 
+		{% endblock %}
+		<ul>
+  		     <li ><a href="#">Top 20</a>
+			<ul>
+			    <li><a href="#">Genre</a>
+				<ul>
+			    <li><a href="/ganam/top_chart/Jazz/">Jazz</a></li>
+			    <li><a href="/ganam/top_chart/Pop/">Pop</a></li>
+			    <li><a href="/ganam/top_chart/Rap/">Rap</a></li>
+			    <li><a href="/ganam/top_chart/Romance/">Romance</a></li>
+			    <li><a href="/ganam/top_chart/RB/">R & B</a></li>
+			    <li><a href="/ganam/top_chart/filmi/">Filmi</a></li>
+			    <li><a href="/ganam/top_chart/Indian/">Indian</a></li>			    
+			</ul>
+			    </li>
+			    <li><a href="#">Language</a>
+			<ul>
+			    <li><a href="/ganam/top_language/Hindi/">Hindi</a></li>
+			    <li><a href="/ganam/top_language/English/">English</a></li>
+			    <li><a href="/ganam/top_language/Punjabi/">Punjabi</a></li>
+			</ul>
+			    </li>
+			    <li><a href="/ganam/top_singer_chart/">Singers</a></li>
+			</ul>
+		    </li>	
+		     <li ><a href="">Charts</a>
+			<ul>
+			    <li><a href="/ganam/chart/Jazz/">Genre</a></li>
+			    <li><a href="/ganam/chart/Pop/">Pop</a></li>
+			    <li><a href="/ganam/chart/Rap/">Rap</a></li> 			    
+			</ul>
+		     </li>
+		     <li ><a href="#">Language</a>
+			<ul>
+			    <li><a href="/ganam/language/Hindi/">Hindi</a></li>
+			    <li><a href="/ganam/language/English/">English</a></li>
+			    <li><a href="/ganam/language/Punjabi/">Punjabi</a></li> 			    
+			</ul>
+  		     </li>			    
+		     <li ><a href="#">Genre</a>
+			<ul>
+			    <li><a href="/ganam/category/Jazz/">Jazz</a></li>
+			    <li><a href="/ganam/category/HipHop/">Hip Hop</a></li>
+			    <li><a href="/ganam/category/Rock/">Rock</a></li> 			    
+			</ul>
+		     </li>
+		     <li ><a href="#">Albums</a></li>	
+		     <li ><a href="#">People</a></li>
+		     <li ><a href="#">Radio</a></li>
+		     <li ><a href="#">Application</a></li>
+		     {% ifequal user.username "rajputs" %}
+    		     <li ><a href="/ganam/manage/">Admin</a></li>
+		    {% endifequal %}
+		</ul>
+	</nav>
+{%  block manage_admin %}
+{% endblock %}
+<script type="text/javascript">
+
+$(function () { 
+	//var processed_json = new Array(); 
+	//for (i = 0; i < {{ json_data }}.length; i++){
+                        //processed_json.push([json_data[i].key, parseInt(json_data[i].value)]);
+	//		console.log(json_data[i]);
+	//}
+    $('#container').highcharts({
+        chart: {
+            type: 'column',
+	             },
+        title: {
+            text: 'Hits of {{ name }} songs'
+        },
+	plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                   
+                }
+            }
+        },
+        xAxis: {
+            title: {
+                            text: "Songs name"
+                        }
+        },
+        yAxis: {
+            title: {
+                text: 'Language'
+            }
+        },
+        series: [{% for location in json_data %}
+        {
+	    //var jk=.replace(' ', '+');
+            name: "{{location.track}}",
+            data: [
+               		{{ location.hit }},
+                   ]
+        },
+        {% endfor %}]
+    });
+});
+</script>
+{% block content %}
+<div id="container" style=" position:relative;width:100%;overflow-x:scroll; height:400px;"></div>
+{% endblock %}
+{% block listofsongs %}
+
+<div id="list" style=" position:relative;margin:20px;">
+<font style="color:Orange; margin:0px; padding:0px;"><h1>List of {{ name }} Songs </h1></font>
+	{% for f in json_data %}
+		<div id=album_list>		
+			<a href="/ganam/article/{{ f.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{f.track}}</a></h2></font>
+				<p id="details">{{f.genre }} {{f.album }} {{f.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+	{%  endfor %}
+	</div>
+{% endblock %}
+</body>
+</html>

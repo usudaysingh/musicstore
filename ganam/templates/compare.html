@@ -1,0 +1,52 @@
+{% include 'base.html' %}
+<script type="text/javascript">
+
+$(function () { 
+	//var processed_json = new Array(); 
+	//for (i = 0; i < {{ json_data }}.length; i++){
+                        //processed_json.push([json_data[i].key, parseInt(json_data[i].value)]);
+	//		console.log(json_data[i]);
+	//}
+    $('#container').highcharts({
+        chart: {
+            type: 'column',
+	             },
+        title: {
+            text: 'Comparison '
+        },
+	plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                   
+                }
+            }
+        },
+        xAxis: {
+            title: {
+                            text: "Hits"
+                        }
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        series: [{% for location in ol %}
+        {
+	    //var jk=.replace(' ', '+');
+            name: "{{location.language}}",
+            data: [
+               		{{ location.hits }},
+                   ]
+        },
+        {% endfor %}]
+    });
+});
+</script>
+{% block content %}
+<div id="container" style=" position:relative;width:100%;overflow-x:scroll; height:400px;"></div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block user_image %}<img id="use_image"  style="position:relative;float:right; top:0px;margin-right:10px;" src="/static/images/use.jpg" />{% endblock %}
+{% block logout %}<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{{ user.username }}</font><a href="/ganam/logout/">Logout</a></p> {% endblock %}
+{% block content %}
+<p>Results for <strong>{{ query }}</strong></p> 
+<div id="search_songs">
+<h1>Songs</h1>
+{% if books or books1 or books2 %}
+        {% for book in books %}
+        <div id=album_list>		
+			<a href="/ganam/article/{{ book.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{book.track}}</a></h2></font>
+				<p id="details">{{book.genre }} {{book.album }} {{book.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+        {% endfor %}
+       {% for ar in books1 %}
+        <div id=album_list>		
+			<a href="/ganam/article/{{ ar.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{ar.track}}</a></h2></font>
+				<p id="details">{{ar.genre }} {{ar.album }} {{ar.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+        {% endfor %}
+	{% for ar2 in books2 %}
+        <div id=album_list>		
+			<a href="/ganam/article/{{ ar2.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{ar2.track}}</a></h2></font>
+				<p id="details">{{ar2.genre }} {{ar2.album }} {{ar2.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+        {% endfor %}       
+{% else %}
+    <p>No song found.</p>
+{% endif %}
+</div>
+<div id="search_album">
+<h1>Albums</h1>
+{% if books3 %}
+	{% for ar3 in books3 %}
+        <div id=album_list>		
+			<a href="/ganam/article/{{ ar3.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{ar3.track}}</a></h2></font>
+				<p id="details">{{ar3.genre }} {{ar3.album }} {{ar3.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+        {% endfor %}
+{% else %}
+    <p>No album found.</p>
+{% endif %}
+</div>   
+{% endblock %}
+

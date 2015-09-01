@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block logout %}<p style="position:relative;float:right;margin:0px;"><font style="color:red;font-family:serif;font-size:170%;margin:0px;float:top;">{{ user.username }}</font><a href="/ganam/">Login</a></p> {% endblock %}
+<h1>You have Logged out </h1>

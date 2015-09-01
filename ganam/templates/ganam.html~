@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Popup Login and Register</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
+<img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" />
+<nav id="symbol">
+	<h1>GANAM </h1>
+</nav>
+<a id="modal_trigger" href="#modal" class="btn">Login/Register</a>
+</head>
+<body>
+<div class="container">
+	
+	
+	<div id ="navbar">
+		<input type="text" id="searchbox" value="type to search">
+		<ul>
+  		     <li><a href="#">Top 20</a></li>		    
+		     <li><a href="">Songs</a></li>
+		     <li><a href="#">Albums</a></li>	
+		     <li><a href="#">People</a></li>
+		     <li><a href="#">Radio</a></li>
+		     <li><a href="#">Application</a></li>
+
+		</ul>
+	</div>
+	<div id ="user_library">
+	<p id="user_songs">Your <font style="color:red;">Library</font></p>
+	{% for post in object_list %}
+			<img id="user_image" style="position:absolute;margin:10px;" src="/static/images/cd.jpg" />
+			<div id ="library_songs" style="color:green; margin-left:40px; padding:0px;">
+				<font style="color:green;"><h4 class="h1">{{post.song_title}}</a></h4></font>
+				<p style="margin:0px;margin-top:0px;">{{post.genre }}</p>
+			</div>
+	{%  endfor %}
+	</div>
+	<div id="albums">
+	{% for post in object_list %}
+		<div id=album_list>		
+			<img style="position:absolute;margin:10px;" src="/static/images/play.jpg" />		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{post.song_title}}</a></h2></font>
+				<p id="details">{{post.genre }} {{post.album }} {{post.artists }} {{post.genre}}</p>
+			</div>
+		</div>
+	{%  endfor %}
+	</div>
+	
+</div>
+</body>
+</html>

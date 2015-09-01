@@ -1,0 +1,21 @@
+{% include "base.html" %}
+{% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <div class="login_form">
+	<h1 style="margin:0px;">LogIn/<font style="color:red;">Register</font></h1>
+    <form style="margin:10px;" method="post" action=".">{% csrf_token %}
+        <table "border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <!--<input type="submit" value="Login" />-->
+	<input id="login_button" type="image" name="submit" src="/static/images/log.png" border="0" alt="Submit" />
+        <input type="hidden" name="next" value="/ganam/home" />
+    </form>
+    <h3><font style="color:red;">Are you new ?</font></h3>
+    <a href="/ganam/register"><img id="register_image" src="/static/images/reg.jpg" /></a>
+    <!--<a href="/ganam/register">Register</a>-->
+   </div>
+{% endblock %}

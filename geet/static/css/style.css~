@@ -1,0 +1,296 @@
+#symbol
+{
+height:30px;
+width:150px;
+margin-left:100px;
+font-size:170%;
+font-family:serif;
+}
+h1
+{
+
+margin:0px;
+padding:0px;
+}
+p
+{
+margin:0px;
+padding:0px;
+}
+nav ul ul {
+	display: none;
+}
+
+nav ul li:hover > ul 
+{
+display: block;
+background-color:black;
+}
+
+nav ul {
+	background-color: black; 
+	border-radius: 10px;  
+	list-style: none;
+	position: absolute;
+	display: inline-table;
+	float:left;
+}
+	nav ul:after {
+		content: ""; clear: both; display: block;
+	}
+nav ul li {
+	float: left;
+	padding-right:20px;
+}
+	nav ul li:hover {
+		background-color: black;
+			}
+		nav ul li:hover a {
+			color: #fff;
+		}
+	
+	nav ul li a {
+		display: block; 
+		margin-left:20px;
+		color: #757575; 
+		text-decoration: none;
+	}
+nav ul ul {
+	background: #5f6975; border-radius: 10px; padding: 0;
+	position: absolute; top: 100%;
+}
+	nav ul ul li {
+		float: none; 
+		border-top: 1px solid #6b727c;
+		border-bottom: 1px solid #575f6a;
+		position: relative;
+		z-index:99;
+	}
+		nav ul ul li a {
+			padding: 15px;
+			color: #fff;
+			z-index:99;
+		}	
+			nav ul ul li a:hover {
+				background-color: black;
+			}
+
+nav ul ul ul{
+	background: #5f6975; border-radius: 10px; padding: 0;
+	position: absolute; top:10px; margin-left:130px;
+}
+	nav ul ul ul li {
+		float: none; 
+		border-top: 1px solid #6b727c;
+		border-bottom: 1px solid #575f6a;
+		position: relative;
+		z-index:99;
+	}
+		nav ul ul ul li a {
+			padding: 15px;
+			color: #fff;
+			z-index:99;
+		}	
+			nav ul ul ul li a:hover {
+				background-color: black;
+			}
+
+#navbar
+{
+width:100%;
+height:50px;
+background-color:black;
+border-radius:20px;
+padding:5px;
+position:relative;
+margin-top:40px;
+}
+
+#searchbox
+{
+width:400px;
+height:40px;
+border-radius:15px;
+background-color:grey;
+text-shadow:none;
+font-size:120%;
+position:relative;
+float:left;
+z-index:99;
+}
+
+#user_library
+{
+float:left;
+width:200px;
+height:500px;
+font-size:120%;
+margin:10px;
+position:relative;
+overflow-y:scroll;
+}
+.user_songs
+{
+margin-top:10px;
+}
+#album_list
+{
+width:400px;
+position:relative;
+}
+#albums
+{
+margin-left:220px;
+margin-top:30px;
+position:relative;
+
+}
+#album_songs
+{
+margin-left:80px;
+position:relative;
+}
+#album_songs:hover
+{
+font-size:110%;
+}
+h4
+{
+margin:0px;
+}
+#album_image
+{
+position:absolute;
+margin:10px;
+}
+#user_image:hover
+{
+width:30px;
+height:40px;
+}
+#album_image:hover
+{
+margin:10px;
+height:70px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(1,2,3,12); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,14); 
+}
+
+#add
+{
+margin-left:420px;
+top:30px;
+position:absolute;
+}
+#add:hover
+{
+height:30px;
+width:30px;
+}
+#search_button
+{
+position:absolute;
+z-index:99;
+float:left;
+margin-left:0px;
+display:none;
+}
+
+#search_album
+{
+position:relative;
+margin:20px;
+}
+
+#search_songs
+{
+position:relative;
+margin:20px;
+}
+
+
+/* This is a admin css */
+.admin_button
+{
+position:relative;
+width:120px;
+height:40px;
+margin:5px;
+padding:0px;
+border-radius:10px;
+background-color:black;
+color:grey;
+box-shadow:none;
+}
+#delete_image
+{
+position:absolute;
+margin-left:250px;
+margin-top:10px;
+z-index:99;
+}
+#edit_image
+{
+position:absolute;
+margin-left:350px;
+margin-top:10px;
+z-index:99;
+
+}
+#manage_songs
+{
+position:relative;
+margin-top:50px;
+}
+#list_songs
+{
+position:relative;
+
+}
+#buttons
+{
+float:left;
+}
+.login_form
+{
+margin:50px;
+width:300px;
+padding:50px;
+position:relative;
+background-color:#ffffff;
+margin-left:300px;
+opacity: 0.8;
+}
+#edit_label
+{
+margin:10px;
+font-size:110%;
+color:red;
+}
+#edit_input
+{
+margin:10px;
+font-size:100%;
+}
+#edit_form
+{
+padding:50px;
+width:350px;
+background-color:#A0B0E0;
+top:0px;
+position:relative;
+margin-left:200px;
+border-radius:50px;
+}

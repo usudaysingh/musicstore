@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>GAANAM</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/exporting.js"></script>
+<script src="/static/js/highcharts.js"></script>
+<a href="/ganam/home/"><img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" /></a>
+{% block user_image %}{% endblock %}
+<nav id="symbol">
+	<a href="/ganam/home/"><h1>GANAM </h1></a>
+</nav>
+{% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+{% block logout %}{% endblock %}
+<script type="text/javascript">
+function user()
+{
+ document.getElementById("manage_user").style.display = 'block';
+ document.getElementById("manage_songs").style.display = 'none';
+ document.getElementById("manage_albums").style.display = 'none';
+}
+function songs()
+{
+ document.getElementById("manage_user").style.display = 'none';
+ document.getElementById("manage_songs").style.display = 'block';
+ document.getElementById("manage_albums").style.display = 'none';
+}
+function albums()
+{
+ document.getElementById("manage_user").style.display = 'none';
+ document.getElementById("manage_songs").style.display = 'none';
+ document.getElementById("manage_albums").style.display = 'albums';
+}
+
+</script>
+</head>
+<body>
+
+<div class="container">
+	
+	<nav id ="navbar">
+		{% block search %} 
+		<form method="get" action="/ganam/search/">
+            	<input type="text" name="q" id="searchbox" placeholder="search"></input>
+        	<input id="search_button" type="image" name="submit" src="/static/images/usq.png" border="0" alt="Submit" /> 
+    		</form>
+		 
+		{% endblock %}
+		<ul>
+  		     <li ><a href="/ganam/compare/language/">Top 20</a>
+			<ul>
+			    <li><a href="#">Genre</a>
+				<ul>
+			    <li><a href="/ganam/top_chart/Jazz/">Jazz</a></li>
+			    <li><a href="/ganam/top_chart/Pop/">Pop</a></li>
+			    <li><a href="/ganam/top_chart/Rap/">Rap</a></li>
+			    <li><a href="/ganam/top_chart/Romance/">Romance</a></li>
+			    <li><a href="/ganam/top_chart/RB/">R & B</a></li>
+			    <li><a href="/ganam/top_chart/filmi/">Filmi</a></li>
+			    <li><a href="/ganam/top_chart/Indian/">Indian</a></li>			    
+			</ul>
+			    </li>
+			    <li><a href="#">Language</a>
+			<ul>
+			    <li><a href="/ganam/top_language/Hindi/">Hindi</a></li>
+			    <li><a href="/ganam/top_language/English/">English</a></li>
+			    <li><a href="/ganam/top_language/Punjabi/">Punjabi</a></li>
+			</ul>
+			    </li>
+			    <li><a href="/ganam/top_singer_chart/">Singers</a></li>
+			</ul>
+		    </li>	
+		     <li ><a href="">Compare</a>
+			<ul>
+			    <li><a href="/ganam/compare/language/">Language</a></li>
+			    <li><a href="/ganam/compare/genre/">Genre</a></li>		    
+			</ul>
+		     </li>
+		     <li ><a href="#">Language</a>
+			<ul>
+			    <li><a href="/ganam/language/Hindi/">Hindi</a></li>
+			    <li><a href="/ganam/language/English/">English</a></li>
+			    <li><a href="/ganam/language/Punjabi/">Punjabi</a></li> 			    
+			</ul>
+  		     </li>			    
+		     <li ><a href="#">Genre</a>
+			<ul>
+			    <li><a href="/ganam/category/Jazz/">Jazz</a></li>
+			    <li><a href="/ganam/category/HipHop/">Hip Hop</a></li>
+			    <li><a href="/ganam/category/Rock/">Rock</a></li>
+			    <li><a href="/ganam/category/Romance/">Romance</a></li>
+			    <li><a href="/ganam/category/Pop/">Pop</a></li>
+			    <li><a href="/ganam/category/Indian/">Indian</a></li>    			    
+			</ul>
+		     </li>
+		     <li ><a href="#">Albums</a></li>	
+		     <li ><a href="#">People</a></li>
+		     <li ><a href="#">Radio</a></li>
+		     <li ><a href="#">Application</a></li>
+		     {% ifequal user.username "rajputs" %}
+    		     <li ><a href="/ganam/manage/">Admin</a></li>
+		    {% endifequal %}
+		</ul>
+	</nav>
+{%  block manage_admin %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

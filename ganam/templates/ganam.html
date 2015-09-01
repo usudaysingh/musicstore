@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Popup Login and Register</title>
+<script type="text/javascript" src="/static/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/static/js/leanModal-modified-for-onload.js"></script>
+<link rel="stylesheet" href="/static/css/login.css" type="text\css" />
+<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
+<img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" />
+<nav id="symbol">
+	<h1>GANAM </h1>
+</nav>
+<a id="modal_trigger" href="#modal" class="btn">Login/Register</a>
+</head>
+<body>
+<div class="container">
+	
+	
+	<div id ="navbar">
+		<input type="text" id="searchbox" value="type to search">
+		<ul>
+  		     <li><a href="#">Top 20</a></li>		    
+		     <li><a href="">Songs</a></li>
+		     <li><a href="#">Albums</a></li>	
+		     <li><a href="#">People</a></li>
+		     <li><a href="#">Radio</a></li>
+		     <li><a href="#">Application</a></li>
+
+		</ul>
+	</div>
+	<div id ="user_library">
+	<p id="user_songs">Your <font style="color:red;">Library</font></p>
+	{% for post in object_list %}
+			<img id="user_image" style="position:absolute;margin:10px;" src="/static/images/cd.jpg" />
+			<div id ="library_songs" style="color:green; margin-left:40px; padding:0px;">
+				<font style="color:green;"><h4 class="h1">{{post.song_title}}</a></h4></font>
+				<p style="margin:0px;margin-top:0px;">{{post.genre }}</p>
+			</div>
+	{%  endfor %}
+	</div>
+	<div id="albums">
+	{% for post in object_list %}
+		<div id=album_list>		
+			<img style="position:absolute;margin:10px;" src="/static/images/play.jpg" />		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{post.song_title}}</a></h2></font>
+				<p id="details">{{post.genre }} {{post.album }} {{post.artists }} {{post.genre}}</p>
+			</div>
+		</div>
+	{%  endfor %}
+	</div>
+	
+
+
+	<div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">Login</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">Connect with Facebook</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">Connect with Google</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>Or use your Email address</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form>
+					<label>Email / Username</label>
+					<input type="text" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" />
+					<br />
+
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">Forgot password?</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form>
+					<label>Full Name</label>
+					<input type="text" />
+					<br />
+
+					<label>Email Address</label>
+					<input type="email" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" />
+					<br />
+
+					<div class="checkbox">
+						<input id="send_updates" type="checkbox" />
+						<label for="send_updates">Send me occasional email updates</label>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+	$(function(){
+		// Calling Login Form
+		$("#login_form").click(function(){
+			$(".social_login").hide();
+			$(".user_login").show();
+			return false;
+		});
+
+		// Calling Register Form
+		$("#register_form").click(function(){
+			$(".social_login").hide();
+			$(".user_register").show();
+			$(".header_title").text('Register');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".social_login").show();
+			$(".header_title").text('Login');
+			return false;
+		});
+
+	})
+</script>
+
+</body>
+</html>

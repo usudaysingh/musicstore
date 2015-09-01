@@ -1,0 +1,10 @@
+{% include "base.html" %}
+{% block content %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            {{ forms.as_table }}
+        </table>
+        <input type="submit" value="Register" />
+    </form>
+    <a href="/ganam/">Login</a>
+{% endblock %}

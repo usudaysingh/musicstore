@@ -1,0 +1,66 @@
+
+<script type="text/javascript">
+
+$(function () { 
+	//var processed_json = new Array(); 
+	//for (i = 0; i < {{ json_data }}.length; i++){
+                        //processed_json.push([json_data[i].key, parseInt(json_data[i].value)]);
+	//		console.log(json_data[i]);
+	//}
+    $('#container').highcharts({
+        chart: {
+            type: 'column',
+	             },
+        title: {
+            text: 'Hits of {{ name }} songs'
+        },
+	plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                   
+                }
+            }
+        },
+        xAxis: {
+            title: {
+                            text: "Songs name"
+                        }
+        },
+        yAxis: {
+            title: {
+                text: 'Listens'
+            }
+        },
+        series: [{% for location in json_data %}
+        {
+	    //var jk=.replace(' ', '+');
+            name: "{{location.track}}",
+            data: [
+               		{{ location.hit }},
+                   ]
+        },
+        {% endfor %}]
+    });
+});
+</script>
+{% block content %}
+<div id="container" style=" position:relative;width:100%;overflow-x:scroll; height:400px;"></div>
+{% endblock %}
+{% block listofsongs %}
+
+<div id="list" style=" position:relative;margin:20px;">
+<font style="color:Orange; margin:0px; padding:0px;"><h1>List of {{ name }} Songs </h1></font>
+	{% for f in json_data %}
+		<div id=album_list>		
+			<a href="/ganam/article/{{ f.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<div id="album_songs">		
+				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{f.track}}</a></h2></font>
+				<p id="details">{{f.genre }} {{f.album }} {{f.artist1 }} </p>  			
+			</div>
+			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+		</div>	
+	{%  endfor %}
+	</div>
+{% endblock %}
