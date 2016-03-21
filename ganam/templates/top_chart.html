@@ -54,12 +54,12 @@ $(function () {
 <font style="color:Orange; margin:0px; padding:0px;"><h1>List of {{ name }} Songs </h1></font>
 	{% for f in json_data %}
 		<div id=album_list>		
-			<a href="/ganam/article/{{ f.id}}/"><img id="album_image" src="/static/images/play.jpg" /></a>		
+			<a href="/ganam/article/{{ f.id}}/"><img id="album_image" src="/static/static/images/play.jpg" /></a>		
 			<div id="album_songs">		
 				<font style="color:green; margin:0px; padding:0px;"><h2 class="h1">{{f.track}}</a></h2></font>
 				<p id="details">{{f.genre }} {{f.album }} {{f.artist1 }} </p>  			
 			</div>
-			<input id="add" type="image" name="submit" src="/static/images/sum.jpg" border="0" alt="Submit" />  
+			<input id="add" type="image" name="submit" src="/static/static/images/sum.jpg" border="0" alt="Submit" />  
 		</div>	
 	{%  endfor %}
 	</div>

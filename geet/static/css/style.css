@@ -168,6 +168,11 @@ margin:10px;
 width:30px;
 height:40px;
 }
+#user_image
+{
+	width:20px;
+	height: 30px;
+}
 #album_image:hover
 {
 margin:10px;

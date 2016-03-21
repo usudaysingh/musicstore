@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <title>GAANAM</title>
-<link rel="stylesheet" href="/static/css/style.css" type="text\css" />
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/exporting.js"></script>
-<script src="/static/js/highcharts.js"></script>
-<a href="/ganam/home/"><img id="logo_image" style="position:absolute;" src="/static/images/logo.jpg" /></a>
+{% load staticfiles %}
+<link rel="stylesheet" href="/static/static/css/style.css" type="text\css" />
+<script src="/static/static/js/jquery.min.js"></script>
+<script src="/static/static/js/exporting.js"></script>
+<script src="/static/static/js/highcharts.js"></script>
+<a href="/ganam/home/"><img id="logo_image" style="position:absolute;" src="/static/static/images/logo.jpg" /></a>
 {% block user_image %}{% endblock %}
 <nav id="symbol">
 	<a href="/ganam/home/"><h1>GANAM </h1></a>
@@ -45,7 +46,7 @@ function albums()
 		{% block search %} 
 		<form method="get" action="/ganam/search/">
             	<input type="text" name="q" id="searchbox" placeholder="search"></input>
-        	<input id="search_button" type="image" name="submit" src="/static/images/usq.png" border="0" alt="Submit" /> 
+        	<input id="search_button" type="image" name="submit" src="/static/static/images/usq.png" border="0" alt="Submit" /> 
     		</form>
 		 
 		{% endblock %}

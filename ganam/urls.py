@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import ListView ,DetailView
 from ganam.views import *
-from ganam.models import songs
+from ganam.models import ganam_songs as songs
 from ganam import views
-from ganam.views import ItemListView
+#from ganam.views import ItemListView
 from django.contrib.auth import views as auth_views
 #from ganam import graphs
 #from ganam.views import ItemUpdateView

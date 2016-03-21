@@ -2,6 +2,8 @@
 #geet
 import django.contrib.auth
 django.contrib.auth.LOGIN_URL = 'ganam'
+import os
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,6 +12,9 @@ ADMINS = (
     # ('rajputs', 'usudaysingh.39@gmail.com'),
 )
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print BASE_DIR
+sys.path.insert(1, os.path.join(BASE_DIR, 'geet'))
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -53,7 +58,8 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/home/rajputs/geet/geet/static/'
+#MEDIA_ROOT = '/home/rajputs/geet/geet/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -70,10 +76,14 @@ STATIC_ROOT = ''
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
+STATIC_PATH = os.path.join(BASE_DIR, 'geet')
+print STATIC_PATH
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    "/home/rajputs/geet/geet/static",
+    # "/home/rajputs/geet/geet/static",
+    STATIC_PATH,
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
@@ -111,10 +121,11 @@ ROOT_URLCONF = 'geet.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'geet.wsgi.application'
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates'),
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    "/home/rajputs/geet/ganam/templates"
-    # Always use forward slashes, even on Windows.
+    #"/home/rajputs/geet/ganam/templates",
+    TEMPLATE_PATH,
     # Don't forget to use absolute paths, not relative paths.
 )
 

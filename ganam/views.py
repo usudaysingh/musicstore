@@ -9,17 +9,19 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
-from ganam.models import user_playlist
-from ganam.models import songs
+#from ganam.models import user_playlist
+from ganam.models import ganam_songs as songs
 import json
 import itertools
 from django.core.context_processors import csrf
 from django.shortcuts import render
 
 """ items list """ 
+"""
 class ItemListView(ListView): 
 	model = user_playlist 
 	template_name = 'item_list.html' 
+"""
 
 @login_required
 def article(request, article_id=1):
